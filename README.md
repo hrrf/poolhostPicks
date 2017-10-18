@@ -3,4 +3,4 @@ For those unfortunate enough to have a football pick'em pool on poolhost, this w
 
 To use:
 
-./poolhost -u <username> -p <password> [-out=<outputfile>]
+`./poolhost -u <username> -p <password> [-out=<outputfile>]`
