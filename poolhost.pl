@@ -52,7 +52,7 @@ my @ham_lines =
 my @picks_lines =
   qx {curl -X GET "http://www3.poolhost.com/index.asp?page=allpicks.asp&exp=1" \\
                -b poolhost_cookies \\
-               -c poolhost_cookies > picks.xls};
+               -c poolhost_cookies > $export_filename.xls};
 
 # Remove the cookie file
 unlink "poolhost_cookies"
