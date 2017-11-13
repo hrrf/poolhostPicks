@@ -30,6 +30,7 @@ my @hostnames = ('www3.poolhost.com',
                  'www5.poolhost.com',
                  'www8.poolhost.com',
                  'www.poolhost.com');
+my $good_hostname = 0;
 
 GetOptions('u=s' => \$username,
            'p=s' => \$password,
@@ -61,6 +62,7 @@ foreach my $hostname (@hostnames) {
   unless (Has_404(@login_lines)) {
     # We hope at this point that one good hostname means they'll
     # all subsequently be good?  But who knows!
+    $good_hostname = 1;
 
     # Then do this to get the next poolid cookie (41149)
     my @ham_lines =
@@ -76,6 +78,11 @@ foreach my $hostname (@hostnames) {
   } else {
     next;   # try the next hostname
   }
+ }
+
+ unless ($good_hostname) {
+   print "Couldn't find a good hostname for poolhost.";
+   exit;
  }
 
 # Remove the cookie file
