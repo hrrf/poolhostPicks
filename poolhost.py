@@ -1,8 +1,9 @@
-import sys, getopt, requests, io
+import sys, getopt, requests
 
 POOLHOST_LOGIN_URI = 'https://poolhost.com/login'
 POOLHOST_HAM_SELECT = 'https://poolhost.com/home/poolselect/41149/0'
 POOLHOST_ALLPICKS_URI = 'https://poolhost.com/profootball/exportallpicks/5'
+
 
 def get_args(argv):
     usage = 'poolhost.py -u username -p password'
@@ -34,6 +35,7 @@ def get_args(argv):
 
     return username, password
 
+
 def login(username, password):
     request_data = {
         'UserName':username,
@@ -54,7 +56,7 @@ def login(username, password):
     with open('output.xls', 'wb') as f:
         f.write(response.content)
 
+
 if __name__ == '__main__':
     username, password = get_args(sys.argv[1:])
     login(username, password)
-
